@@ -1,0 +1,28 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" width="512" height="512" role="img" aria-label="WG-Planer Icon">
+  <defs>
+    <linearGradient id="bgGreen" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#ecfdf5"/>
+      <stop offset="100%" stop-color="#d1fae5"/>
+    </linearGradient>
+    <linearGradient id="greenPrimary" x1="15%" y1="0%" x2="85%" y2="100%">
+      <stop offset="0%" stop-color="#10b981"/>
+      <stop offset="55%" stop-color="#059669"/>
+      <stop offset="100%" stop-color="#047857"/>
+    </linearGradient>
+  </defs>
+  <!-- Background -->
+  <rect width="512" height="512" rx="112" fill="url(#bgGreen)"/>
+  <!-- House roof -->
+  <polygon points="256,80 432,230 432,248 400,248 400,232 256,108 112,232 112,248 80,248 80,230" fill="url(#greenPrimary)"/>
+  <!-- House body -->
+  <rect x="130" y="240" width="252" height="192" rx="10" fill="url(#greenPrimary)" opacity="0.85"/>
+  <!-- Door -->
+  <rect x="218" y="340" width="76" height="92" rx="10" fill="#ecfdf5"/>
+  <!-- Left window -->
+  <rect x="152" y="272" width="68" height="60" rx="8" fill="#ecfdf5" opacity="0.9"/>
+  <!-- Right window -->
+  <rect x="292" y="272" width="68" height="60" rx="8" fill="#ecfdf5" opacity="0.9"/>
+  <!-- People dots inside house (representing flatmates) -->
+  <circle cx="186" cy="302" r="14" fill="url(#greenPrimary)" opacity="0.5"/>
+  <circle cx="326" cy="302" r="14" fill="url(#greenPrimary)" opacity="0.5"/>
+</svg>

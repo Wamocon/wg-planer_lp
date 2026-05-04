@@ -1,0 +1,399 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>WG-Planer – Split Costs, Manage Tasks, Simplify Flatshare Life</title>
+  <meta name="description" content="WG-Planer helps flatmates split expenses fairly, manage cleaning schedules, and always stay on the same page. Start for free.">
+  <meta name="keywords" content="flatshare app, WG planner, split expenses roommates, cleaning schedule app, shared apartment organiser, flatmate app Germany">
+  <meta name="robots" content="index, follow">
+  <meta name="author" content="WG-Planer">
+  <meta name="theme-color" content="#059669">
+  <link rel="icon" href="app-icon-light.svg" type="image/svg+xml">
+  <link rel="canonical" href="https://wg-planer.app/en">
+
+  <meta property="og:title" content="WG-Planer – Your Flatshare. Your Life. Your Control.">
+  <meta property="og:description" content="Split costs fairly, manage cleaning rosters, share shopping lists – all in one app for your flatshare.">
+  <meta property="og:type" content="website">
+  <meta property="og:locale" content="en_US">
+  <meta property="og:site_name" content="WG-Planer">
+
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="WG-Planer – The Smart Flatshare App">
+  <meta name="twitter:description" content="Simplify flatshare life: split costs, manage tasks, settle up transparently. Start for free.">
+
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "SoftwareApplication",
+    "name": "WG-Planer",
+    "applicationCategory": "LifestyleApplication",
+    "operatingSystem": "Web",
+    "description": "WG-Planer is a platform for organising shared apartments – with expense splitting, cleaning schedules, shopping lists, internal posts, and move-out settlement.",
+    "offers": {"@type": "Offer", "price": "0", "priceCurrency": "EUR", "description": "Free to use"},
+    "author": {"@type": "Organization", "name": "WAMOCON GmbH"}
+  }
+  </script>
+
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    "mainEntity": [
+      {"@type": "Question", "name": "Is WG-Planer free?", "acceptedAnswer": {"@type": "Answer", "text": "WG-Planer is free to use. Optional pro plans are available for advanced features."}},
+      {"@type": "Question", "name": "How does expense splitting work?", "acceptedAnswer": {"@type": "Answer", "text": "You log expenses and WG-Planer automatically calculates who owes whom how much."}},
+      {"@type": "Question", "name": "Can multiple flatmates use the app simultaneously?", "acceptedAnswer": {"@type": "Answer", "text": "Yes, after invitation all flatmates see the same data in real time."}},
+      {"@type": "Question", "name": "What happens when a flatmate moves out?", "acceptedAnswer": {"@type": "Answer", "text": "The move-out settlement calculates all open amounts fairly and generates a clear final statement."}}
+    ]
+  }
+  </script>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
+  <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
+  <style>
+    :root {
+      --color-bg: #f5f5f7;
+      --color-bg-alt: #eeeef0;
+      --color-surface: #ffffff;
+      --color-border: rgba(0,0,0,.08);
+      --color-border-hover: rgba(0,0,0,.14);
+      --color-border-accent: rgba(5,150,105,.18);
+      --color-accent: #059669;
+      --color-accent-dim: #047857;
+      --color-accent-soft: rgba(5,150,105,.06);
+      --color-text-main: #111113;
+      --color-muted: #555558;
+      --color-faint: #8e8e93;
+      --font-sans: 'Inter', system-ui, sans-serif;
+    }
+    body { font-family: var(--font-sans); background: var(--color-bg); color: var(--color-text-main); }
+  </style>
+</head>
+
+<body class="overflow-x-hidden antialiased leading-relaxed">
+  <div class="gradient-orbs" aria-hidden="true">
+    <div class="orb orb--1"></div>
+    <div class="orb orb--2"></div>
+    <div class="orb orb--3"></div>
+  </div>
+
+  <div class="fixed top-0 left-0 right-0 z-[60] overflow-hidden" style="height:48px;background:#0a0a0c;border-bottom:1px solid rgba(5,150,105,.25);">
+    <div style="display:flex;align-items:center;height:100%;white-space:nowrap;animation:ticker-scroll 18s linear infinite;">
+      <span class="ticker-item">WG-PLANER &mdash; Split costs. Manage tasks. Always in sync.</span>
+      <span class="ticker-item">WG-PLANER &mdash; Split costs. Manage tasks. Always in sync.</span>
+      <span class="ticker-item">WG-PLANER &mdash; Split costs. Manage tasks. Always in sync.</span>
+      <span class="ticker-item">WG-PLANER &mdash; Split costs. Manage tasks. Always in sync.</span>
+    </div>
+  </div>
+
+  <nav class="fixed top-[48px] left-0 right-0 z-50 h-16 flex items-center transition-all duration-400" id="nav">
+    <div class="w-full max-w-[1100px] mx-auto px-5 md:px-10 flex items-center justify-between">
+      <a href="#" class="hover:opacity-70 transition-opacity flex items-center gap-2" style="text-decoration:none;">
+        <img src="app-icon-light.svg" alt="WG-Planer icon" style="width:28px;height:28px;">
+        <span style="font-size:1.5rem;font-weight:900;letter-spacing:-0.5px;color:#059669;">WG-Planer</span>
+      </a>
+      <div class="hidden md:flex items-center gap-4">
+        <div class="nav-links-pill">
+          <a href="#problem" class="nav-link" data-nav-section="problem">Problem</a>
+          <a href="#warum" class="nav-link" data-nav-section="warum">Solution</a>
+          <a href="#funktionen" class="nav-link" data-nav-section="funktionen">Features</a>
+          <a href="#process" class="nav-link" data-nav-section="process">Process</a>
+          <a href="#ablauf" class="nav-link" data-nav-section="ablauf">How it works</a>
+          <a href="#faq" class="nav-link" data-nav-section="faq">FAQ</a>
+        </div>
+        <a href="https://wg-planer.vercel.app/" target="_blank" rel="noopener noreferrer" style="display:inline-flex;align-items:center;justify-content:center;padding:10px 14px;background:#059669;color:#fff;font-size:.8rem;font-weight:700;border-radius:999px;text-decoration:none;">Open App</a>
+        <div class="flex items-center gap-2 text-sm font-semibold" style="color:var(--color-muted);background:rgba(255,255,255,0.05);padding:6px 12px;border-radius:20px;border:1px solid rgba(255,255,255,0.1);">
+          <a href="index.html" class="hover:text-white transition-colors" style="text-decoration:none;">DE</a>
+          <span style="opacity:0.3">|</span>
+          <a href="index.en.html" style="color:#059669;text-decoration:none;">EN</a>
+        </div>
+      </div>
+      <button class="nav-hamburger md:hidden" id="navHamburger" aria-label="Menu"><span></span><span></span><span></span></button>
+    </div>
+  </nav>
+
+  <div id="mobileMenu" aria-hidden="true">
+    <button style="position:absolute;top:18px;right:18px;width:44px;height:44px;border-radius:50%;border:1px solid rgba(255,255,255,.15);background:rgba(255,255,255,.08);color:#fff;display:flex;align-items:center;justify-content:center;cursor:pointer;font-size:1.2rem;" onclick="closeMobileMenu()">&times;</button>
+    <div class="mm-brand">WG-Planer</div>
+    <div class="mm-grid">
+      <a href="#problem" class="mm-link" onclick="closeMobileMenu()">Problem</a>
+      <a href="#warum" class="mm-link" onclick="closeMobileMenu()">Solution</a>
+      <a href="#funktionen" class="mm-link" onclick="closeMobileMenu()">Features</a>
+      <a href="#process" class="mm-link" onclick="closeMobileMenu()">Process</a>
+      <a href="#ablauf" class="mm-link" onclick="closeMobileMenu()">How it works</a>
+      <a href="#faq" class="mm-link" onclick="closeMobileMenu()">FAQ</a>
+      <a href="#final-cta" class="mm-link" onclick="closeMobileMenu()">Get Started</a>
+    </div>
+    <div style="margin-top:2rem;display:flex;justify-content:center;gap:1.5rem;font-size:1.2rem;font-weight:700;">
+      <a href="index.html" style="color:var(--color-muted);text-decoration:none;">DE</a>
+      <span style="color:var(--color-border);">|</span>
+      <a href="index.en.html" style="color:#059669;text-decoration:none;">EN</a>
+    </div>
+  </div>
+
+  <section class="relative flex items-center justify-center overflow-hidden pt-[160px] pb-[130px]" id="hero">
+    <canvas id="heroParticles" class="absolute inset-0 z-[1]"></canvas>
+    <div class="absolute inset-0 z-0" style="background:radial-gradient(ellipse 70% 55% at 50% 40%,rgba(5,150,105,.09)0%,transparent 65%),radial-gradient(ellipse 50% 60% at 20% 80%,rgba(5,150,105,.05)0%,transparent 50%),radial-gradient(ellipse 45% 50% at 80% 25%,rgba(16,185,129,.07)0%,transparent 50%);"></div>
+    <div class="absolute inset-0 z-0 opacity-[.06]" style="background-image:linear-gradient(rgba(255,255,255,.018) 1px,transparent 1px),linear-gradient(90deg,rgba(255,255,255,.018) 1px,transparent 1px);background-size:72px 72px;mask-image:radial-gradient(ellipse 60% 55% at 50% 50%,black 0%,transparent 70%);"></div>
+
+    <div class="relative z-10 text-center max-w-[960px] px-5">
+      <div class="reveal inline-flex items-center gap-2 px-4 py-2 rounded-full mb-7" style="background:rgba(5,150,105,.12);border:1px solid rgba(5,150,105,.35);">
+        <img src="app-icon-light.svg" alt="WG-Planer" style="width:16px;height:16px;">
+        <span style="font-size:.8rem;font-weight:700;color:#10b981;letter-spacing:.06em;text-transform:uppercase;">For flatshare residents. Start for free.</span>
+      </div>
+
+      <h1 class="reveal text-3xl md:text-7xl lg:text-8xl font-bold leading-[1.08] tracking-tight mb-6">
+        Your Flatshare.<br><span class="gradient-text">Your Life. Your Control.</span>
+      </h1>
+      <p class="reveal text-lg md:text-xl max-w-[680px] mx-auto leading-relaxed" style="color:var(--color-muted);">
+        WG-Planer helps you split costs fairly, manage tasks, and always stay on the same page – no spreadsheets, no arguments.
+      </p>
+
+      <div class="reveal mt-10 flex flex-col sm:flex-row gap-3 justify-center">
+        <a href="https://wg-planer.vercel.app/" target="_blank" rel="noopener noreferrer" style="display:inline-flex;align-items:center;justify-content:center;gap:8px;padding:14px 30px;background:#059669;color:#fff;font-size:.95rem;font-weight:700;border-radius:12px;text-decoration:none;transition:all .25s ease;box-shadow:0 4px 24px rgba(5,150,105,.3);">Open App</a>
+      </div>
+
+      <p class="reveal mt-5 text-sm" style="color:#8e8e93;">Split expenses. Manage tasks. Settle up at move-out.</p>
+    </div>
+    <div class="absolute bottom-0 left-0 right-0 h-[120px] z-20" style="background:linear-gradient(to bottom, transparent, #0f1117);"></div>
+  </section>
+
+  <section class="relative section-dark" id="problem" style="padding:6.5rem 0 5rem;margin-top:-2px;">
+    <div class="max-w-[1100px] mx-auto px-5 md:px-10">
+      <h2 class="reveal text-4xl md:text-6xl font-black leading-[1.05] tracking-tight mb-6" style="color:#f0f0f2;">
+        Many flatshare residents lose track of<br><span style="color:#059669;">their shared household</span>
+      </h2>
+      <p class="reveal text-lg max-w-[620px] leading-relaxed mb-16" style="color:#9a9aaa;">These three figures show why a shared digital platform for flatshares is so valuable: how many people live in shared housing, the demand for digital management, and the typical costs involved.</p>
+
+      <div class="grid grid-cols-1 md:grid-cols-3 gap-4">
+        <div class="reveal text-center p-8 rounded-2xl" style="background:rgba(5,150,105,.07);border:1px solid rgba(5,150,105,.25);">
+          <span class="block stat-value font-black leading-none mb-3 tabular-nums" style="color:#059669;" data-target="2800000" data-separator=".">0</span>
+          <span class="block text-lg font-semibold mb-1" style="color:#f0f0f2;">flatshare residents in DACH</span>
+          <span class="block text-xs" style="color:#7a7a88;">showing the enormous relevance of shared household management</span>
+        </div>
+        <div class="reveal text-center p-8 rounded-2xl" style="background:rgba(5,150,105,.07);border:1px solid rgba(5,150,105,.25);">
+          <span class="block stat-value font-black leading-none mb-3 tabular-nums" style="color:#059669;" data-target="34" data-suffix="%">0</span>
+          <span class="block text-lg font-semibold mb-1" style="color:#f0f0f2;">of students live in flatshares</span>
+          <span class="block text-xs" style="color:#7a7a88;">digital flatshare management is a mass-market topic</span>
+        </div>
+        <div class="reveal text-center p-8 rounded-2xl" style="background:rgba(5,150,105,.07);border:1px solid rgba(5,150,105,.25);">
+          <span class="block text-xs font-semibold mb-2 uppercase tracking-[0.12em]" style="color:#10b981;">up to</span>
+          <span class="block stat-value font-black leading-none mb-1 tabular-nums" style="color:#059669;" data-target="450">0</span>
+          <span class="block text-sm font-semibold mb-2" style="color:#d3d3da;">EUR</span>
+          <span class="block text-lg font-semibold mb-1" style="color:#f0f0f2;">monthly shared household costs</span>
+          <span class="block text-xs" style="color:#7a7a88;">fair splitting creates transparency and prevents disputes</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="py-24 md:py-32 section-dark" id="warum" style="background:#050508;">
+    <div class="max-w-[1100px] mx-auto px-5 md:px-10">
+      <div class="text-center mb-14">
+        <h2 class="reveal text-3xl md:text-5xl font-bold leading-[1.1] tracking-tight mb-5" style="color:#f0f0f2;">Why WG-Planer</h2>
+        <p class="reveal text-lg max-w-[650px] mx-auto leading-relaxed" style="color:#9999a1;">Four clear advantages for flatmates who want to organise their daily life together and settle costs fairly.</p>
+      </div>
+
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-5">
+        <div class="reveal p-7 rounded-2xl card-hover" style="background:rgba(255,255,255,.04);border:1px solid rgba(255,255,255,.1);">
+          <h3 class="text-xl font-bold mb-3" style="color:#f0f0f2;">Split costs fairly</h3>
+          <p style="color:#9a9aaa;">Who paid what? WG-Planer automatically calculates who owes whom how much – no calculator, no arguments.</p>
+        </div>
+        <div class="reveal p-7 rounded-2xl card-hover" style="background:rgba(255,255,255,.04);border:1px solid rgba(255,255,255,.1);">
+          <h3 class="text-xl font-bold mb-3" style="color:#f0f0f2;">Cleaning schedule for everyone</h3>
+          <p style="color:#9a9aaa;">Distribute tasks fairly, set deadlines, and track completion status – visible for all flatmates.</p>
+        </div>
+        <div class="reveal p-7 rounded-2xl card-hover" style="background:rgba(255,255,255,.04);border:1px solid rgba(255,255,255,.1);">
+          <h3 class="text-xl font-bold mb-3" style="color:#f0f0f2;">Share shopping lists</h3>
+          <p style="color:#9a9aaa;">A shared shopping list that all flatmates can see and update in real time.</p>
+        </div>
+        <div class="reveal p-7 rounded-2xl card-hover" style="background:rgba(255,255,255,.04);border:1px solid rgba(255,255,255,.1);">
+          <h3 class="text-xl font-bold mb-3" style="color:#f0f0f2;">Stay informed together</h3>
+          <p style="color:#9a9aaa;">Internal posts and announcements for all flatmates – no important update goes unnoticed.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="funktionen" class="py-24 section-alt">
+    <div class="max-w-[1100px] mx-auto px-5 md:px-10">
+      <div class="text-center mb-14">
+        <h2 class="reveal text-3xl md:text-5xl font-bold tracking-tight mb-4">Core features for your daily flatshare life</h2>
+        <p class="reveal text-lg max-w-[680px] mx-auto" style="color:var(--color-muted);">All the essential tools for a well-run flatshare in one clean interface.</p>
+      </div>
+
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-5">
+        <article class="reveal p-7 rounded-2xl bg-white border card-hover accent-hover">
+          <h3 class="text-xl font-bold mb-3">Expense management</h3>
+          <p style="color:var(--color-muted);">Log groceries, rent, utilities and more – with automatic calculation of who owes whom.</p>
+        </article>
+        <article class="reveal p-7 rounded-2xl bg-white border card-hover accent-hover">
+          <h3 class="text-xl font-bold mb-3">Cleaning schedule &amp; tasks</h3>
+          <p style="color:var(--color-muted);">Create recurring tasks, assign them to flatmates, and track their status transparently.</p>
+        </article>
+        <article class="reveal p-7 rounded-2xl bg-white border card-hover accent-hover">
+          <h3 class="text-xl font-bold mb-3">Shopping list</h3>
+          <p style="color:var(--color-muted);">Shared shopping lists for all flatmates – synchronised in real time so nothing is forgotten.</p>
+        </article>
+        <article class="reveal p-7 rounded-2xl bg-white border card-hover accent-hover">
+          <h3 class="text-xl font-bold mb-3">Move-out settlement</h3>
+          <p style="color:var(--color-muted);">When a flatmate moves out, all open amounts are settled fairly and clearly – no hassle, no disputes.</p>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <section class="py-24 section-dark" id="process" style="background:#090a0e;">
+    <div class="max-w-[1100px] mx-auto px-5 md:px-10">
+      <div class="text-center mb-10">
+        <h2 class="reveal text-3xl md:text-5xl font-bold tracking-tight mb-4" style="color:#f0f0f2;">Main process as a flatshare planning flow</h2>
+        <p class="reveal text-lg max-w-[760px] mx-auto" style="color:#a2a2ab;">The goal of WG-Planer: turn chaotic flatshare life into a clear, shared structure. The flow below shows the journey from setting up your flatshare to settling up fairly.</p>
+      </div>
+      <div class="reveal process-shell" id="processFlow">
+        <div class="process-track">
+          <div class="process-track__bar" id="processFlowBar"></div>
+          <div class="process-track__dot" id="processFlowDot"></div>
+        </div>
+        <div class="process-grid">
+          <article class="process-step process-step--active" tabindex="0">
+            <div class="process-step__index">01</div>
+            <h3 class="process-step__title">Create your flatshare</h3>
+            <p class="process-step__text">Set up a new flatshare and invite your flatmates via link or email. No complicated setup.</p>
+            <p class="process-step__hint">Click to expand</p>
+            <div class="process-step__more">Create a flatshare in seconds and invite everyone – start managing your shared life together immediately.</div>
+          </article>
+          <article class="process-step" tabindex="0">
+            <div class="process-step__index">02</div>
+            <h3 class="process-step__title">Structure daily life</h3>
+            <p class="process-step__text">Log expenses, create a cleaning schedule, add shopping lists and share posts.</p>
+            <p class="process-step__hint">Click to expand</p>
+            <div class="process-step__more">Capture all flatshare activities centrally: who bought what? What needs cleaning? What's missing in the fridge?</div>
+          </article>
+          <article class="process-step" tabindex="0">
+            <div class="process-step__index">03</div>
+            <h3 class="process-step__title">Stay on top of it all</h3>
+            <p class="process-step__text">Dashboard shows instantly: who owes whom? Which tasks are open? What's on today?</p>
+            <p class="process-step__hint">Click to expand</p>
+            <div class="process-step__more">With clear overviews and automatic calculations, fair decisions replace heated discussions.</div>
+          </article>
+          <article class="process-step" tabindex="0">
+            <div class="process-step__index">04</div>
+            <h3 class="process-step__title">Settle up fairly</h3>
+            <p class="process-step__text">Moving out? All open items are calculated transparently and split fairly.</p>
+            <p class="process-step__hint">Click to expand</p>
+            <div class="process-step__more">Result: a complete overview of all debts and credits – perfect for any change in your flatshare.</div>
+          </article>
+        </div>
+        <p class="process-target"><strong>Goal:</strong> More transparency, fewer arguments, and a clear overview for all flatshare members.</p>
+      </div>
+    </div>
+  </section>
+
+  <section class="py-24 section-dark" style="background:#0f1117;" id="ablauf">
+    <div class="max-w-[1000px] mx-auto px-5 md:px-10">
+      <div class="text-center mb-12">
+        <h2 class="reveal text-3xl md:text-5xl font-bold tracking-tight mb-4" style="color:#f0f0f2;">How it works in 3 steps</h2>
+      </div>
+      <div class="grid grid-cols-1 md:grid-cols-3 gap-5">
+        <div class="reveal p-7 rounded-2xl" style="background:rgba(5,150,105,.08);border:1px solid rgba(5,150,105,.25);">
+          <span class="text-sm font-bold uppercase tracking-wider" style="color:#10b981;">Step 1</span>
+          <h3 class="text-xl font-bold mt-2 mb-2" style="color:#f0f0f2;">Create flatshare</h3>
+          <p style="color:#9a9aaa;">Set up your flatshare and invite all flatmates via link – done in under a minute.</p>
+        </div>
+        <div class="reveal p-7 rounded-2xl" style="background:rgba(5,150,105,.08);border:1px solid rgba(5,150,105,.25);">
+          <span class="text-sm font-bold uppercase tracking-wider" style="color:#10b981;">Step 2</span>
+          <h3 class="text-xl font-bold mt-2 mb-2" style="color:#f0f0f2;">Log daily life</h3>
+          <p style="color:#9a9aaa;">Record expenses, distribute tasks and coordinate shopping together.</p>
+        </div>
+        <div class="reveal p-7 rounded-2xl" style="background:rgba(5,150,105,.08);border:1px solid rgba(5,150,105,.25);">
+          <span class="text-sm font-bold uppercase tracking-wider" style="color:#10b981;">Step 3</span>
+          <h3 class="text-xl font-bold mt-2 mb-2" style="color:#f0f0f2;">Settle up transparently</h3>
+          <p style="color:#9a9aaa;">Always see who owes whom – and settle up fairly and completely at move-out.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="py-24" id="faq">
+    <div class="max-w-[900px] mx-auto px-5 md:px-10">
+      <div class="text-center mb-10">
+        <h2 class="reveal text-3xl md:text-5xl font-bold tracking-tight mb-4">Frequently Asked Questions</h2>
+      </div>
+      <div id="faqList" class="rounded-2xl bg-white border overflow-hidden">
+        <div class="faq-item">
+          <button class="faq-question w-full text-left px-6 py-5 flex items-center justify-between">
+            <span class="font-semibold">Is WG-Planer free?</span>
+            <span class="faq-question__icon relative w-5 h-5"></span>
+          </button>
+          <div class="faq-answer px-6 pb-5" style="color:var(--color-muted);">WG-Planer is free to use. Optional pro plans are available for advanced features.</div>
+        </div>
+        <div class="faq-item">
+          <button class="faq-question w-full text-left px-6 py-5 flex items-center justify-between">
+            <span class="font-semibold">How does expense splitting work?</span>
+            <span class="faq-question__icon relative w-5 h-5"></span>
+          </button>
+          <div class="faq-answer px-6 pb-5" style="color:var(--color-muted);">You log expenses and WG-Planer automatically calculates who owes whom how much – fair and transparent.</div>
+        </div>
+        <div class="faq-item">
+          <button class="faq-question w-full text-left px-6 py-5 flex items-center justify-between">
+            <span class="font-semibold">Can multiple flatmates use the app at the same time?</span>
+            <span class="faq-question__icon relative w-5 h-5"></span>
+          </button>
+          <div class="faq-answer px-6 pb-5" style="color:var(--color-muted);">Yes, after the invitation all flatmates see the same data in real time.</div>
+        </div>
+        <div class="faq-item">
+          <button class="faq-question w-full text-left px-6 py-5 flex items-center justify-between">
+            <span class="font-semibold">What happens when a flatmate moves out?</span>
+            <span class="faq-question__icon relative w-5 h-5"></span>
+          </button>
+          <div class="faq-answer px-6 pb-5" style="color:var(--color-muted);">The move-out settlement calculates all open amounts fairly and generates a clear final statement for everyone.</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="py-24 section-dark" id="final-cta" style="background:#050508;">
+    <div class="max-w-[900px] mx-auto px-5 md:px-10 text-center">
+      <h2 class="reveal text-3xl md:text-5xl font-black leading-[1.1] mb-5" style="color:#f0f0f2;">Say goodbye to flatshare stress and messy spreadsheets.</h2>
+      <p class="reveal text-lg max-w-[620px] mx-auto mb-9" style="color:#9a9aaa;">Start for free – no chaos, no arguments, no Excel.</p>
+      <div class="reveal flex flex-col sm:flex-row gap-3 justify-center">
+        <a href="https://wg-planer.vercel.app/" target="_blank" rel="noopener noreferrer" style="display:inline-flex;align-items:center;justify-content:center;padding:14px 30px;background:#059669;color:#fff;font-weight:700;border-radius:12px;text-decoration:none;">Get started with WG-Planer</a>
+      </div>
+    </div>
+  </section>
+
+  <footer style="background:#050508;color:#8e8e93;padding:32px 20px 40px;text-align:center;border-top:1px solid rgba(255,255,255,.08);">
+    <div class="flex items-center justify-center gap-2 mb-2">
+      <img src="app-icon-light.svg" alt="WG-Planer" style="width:18px;height:18px;opacity:.85;">
+      <span style="font-weight:700;color:#f0f0f2;">WG-Planer</span>
+    </div>
+    <p style="font-size:.9rem;">The smart flatshare app by WAMOCON GmbH.</p>
+    <div style="margin-top:12px;display:flex;gap:14px;justify-content:center;flex-wrap:wrap;font-size:.85rem;">
+      <a href="https://wg-planer.vercel.app/" target="_blank" rel="noopener noreferrer" style="color:#6ee7b7;text-decoration:none;">Open App</a>
+      <a href="impressum.html" style="color:#6ee7b7;text-decoration:none;">Imprint</a>
+      <a href="agb.html" style="color:#6ee7b7;text-decoration:none;">T&amp;C</a>
+      <a href="datenschutz.html" style="color:#6ee7b7;text-decoration:none;">Privacy Policy</a>
+    </div>
+  </footer>
+
+  <button id="backToTop" class="back-to-top" aria-label="Back to top">
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 15l-6-6-6 6"/></svg>
+  </button>
+
+  <div id="cookieBanner" class="cookie-banner" role="dialog" aria-live="polite" aria-label="Cookie notice">
+    <div class="cookie-banner__inner">
+      <h3 style="font-weight:700;font-size:1.05rem;margin-bottom:.45rem;">Cookie Notice</h3>
+      <p style="font-size:.92rem;line-height:1.6;color:#4d4d55;">WG-Planer uses technically necessary cookies for login, session management, and security-relevant functions. Analytics or marketing cookies are not used by default.</p>
+      <div style="display:flex;gap:10px;justify-content:flex-end;margin-top:1rem;flex-wrap:wrap;">
+        <button class="cookie-banner__btn cookie-banner__btn--reject" data-cookie-action="reject">Close</button>
+        <button class="cookie-banner__btn cookie-banner__btn--accept" data-cookie-action="accept">Got it</button>
+      </div>
+    </div>
+  </div>
+
+  <script src="script.js"></script>
+</body>
+</html>
